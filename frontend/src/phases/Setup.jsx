@@ -47,8 +47,8 @@ export default function Setup({ onComplete }) {
     setError(null)
     try {
       const images = selectedFiles.length > 0 ? await uploadImages(selectedFiles) : []
-      const { summary } = await startResearch(title.trim(), type)
-      onComplete({ title: title.trim(), type, images, summary })
+      const { summary, searches_run } = await startResearch(title.trim(), type)
+      onComplete({ title: title.trim(), type, images, summary, searches_run })
     } catch (e) {
       setError(e.message)
       setIsLoading(false)

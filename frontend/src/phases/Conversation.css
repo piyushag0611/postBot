@@ -1,0 +1,43 @@
+.conversation-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.conversation-sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  border-right: 1px solid #e5e5e5;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.conv-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.conv-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.conv-type {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.conversation-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-text {
+  color: #bbb;
+}
