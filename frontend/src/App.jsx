@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Setup from './phases/Setup'
+import Conversation from './phases/Conversation'
 import './App.css'
 
 export default function App() {
@@ -8,14 +9,16 @@ export default function App() {
   const [mediaType, setMediaType] = useState('movie')
   const [uploadedImages, setUploadedImages] = useState([])
   const [researchSummary, setResearchSummary] = useState('')
+  const [searchesRun, setSearchesRun] = useState(0)
   const [history, setHistory] = useState([])
   const [posts, setPosts] = useState([])
 
-  function handleSetupComplete({ title, type, images, summary }) {
+  function handleSetupComplete({ title, type, images, summary, searches_run }) {
     setMediaTitle(title)
     setMediaType(type)
     setUploadedImages(images)
     setResearchSummary(summary)
+    setSearchesRun(searches_run ?? 0)
     setPhase('conversation')
   }
 
@@ -30,10 +33,16 @@ export default function App() {
         <Setup onComplete={handleSetupComplete} />
       )}
       {phase === 'conversation' && (
-        <div className="placeholder">
-          <p>Conversation phase — coming in Phase 4</p>
-          <small>{mediaTitle} · {mediaType} · {uploadedImages.length} image(s) uploaded</small>
-        </div>
+        <Conversation
+          mediaTitle={mediaTitle}
+          mediaType={mediaType}
+          researchSummary={researchSummary}
+          searchesRun={searchesRun}
+          uploadedImages={uploadedImages}
+          history={history}
+          onHistoryUpdate={setHistory}
+          onGenerate={handlePostsGenerated}
+        />
       )}
       {phase === 'preview' && (
         <div className="placeholder">

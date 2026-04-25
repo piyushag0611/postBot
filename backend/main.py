@@ -1,5 +1,8 @@
+import logging
 import os
 import uuid
+
+logging.basicConfig(level=logging.DEBUG)
 from pathlib import Path
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -46,8 +49,11 @@ class ResearchRequest(BaseModel):
 
 @app.post("/api/research")
 async def research(req: ResearchRequest):
-    # Implemented in Phase 3
-    return {"summary": "", "searches_run": 0}
+    from research import run_research
+    try:
+        return await run_research(req.title, req.type)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 class MessageRequest(BaseModel):

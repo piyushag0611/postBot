@@ -1,0 +1,58 @@
+.conversation-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.conversation-sidebar {
+  flex-shrink: 0;
+  border-right: 1px solid #e5e5e5;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+
+.conv-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.conv-title {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.conv-type {
+  font-size: 0.8rem;
+  color: #999;
+  text-transform: capitalize;
+}
+
+.resize-handle {
+  width: 4px;
+  flex-shrink: 0;
+  cursor: col-resize;
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.resize-handle:hover,
+.resize-handle:active {
+  background: #e0e0e0;
+}
+
+.conversation-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.placeholder-text {
+  color: #bbb;
+}
